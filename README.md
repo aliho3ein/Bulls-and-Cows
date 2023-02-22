@@ -1,7 +1,6 @@
 # Bulls and Cows
 
-<img src='https://raw.githubusercontent.com/FBW-WD-22-D07/pb-workshop/817383b05f13fe0d490dab97d8969e28f8c0d544/bulls_and_cows/assets/cow.svg?token=AZXT46WTMWQAVHFBIH5B4VLD6YICK' alt='Cow'>
-<img src='https://raw.githubusercontent.com/FBW-WD-22-D07/pb-workshop/817383b05f13fe0d490dab97d8969e28f8c0d544/bulls_and_cows/assets/bull.svg?token=AZXT46S6MIAPYXRLU77ICE3D6YIB6' alt='Bull'>
+<img src='https://raw.githubusercontent.com/FBW-WD-22-D07/pb-workshop/817383b05f13fe0d490dab97d8969e28f8c0d544/bulls_and_cows/assets/cow.svg?token=AZXT46WTMWQAVHFBIH5B4VLD6YICK' alt='Cow'><img src='https://raw.githubusercontent.com/FBW-WD-22-D07/pb-workshop/817383b05f13fe0d490dab97d8969e28f8c0d544/bulls_and_cows/assets/bull.svg?token=AZXT46S6MIAPYXRLU77ICE3D6YIB6' alt='Bull'>
 
 Our game will be player vs computer. The computer will come up with a secret number and the player will be trying to guess it.
 
