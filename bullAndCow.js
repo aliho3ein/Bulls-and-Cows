@@ -5,17 +5,17 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-/** Count of Number */
+/** nummerlänge */
 const rollsNumber = 4;
 
-/** Create Random Number */
+/** Zufallszahl erstellen*/
 let numb = "";
 while (numb.length < rollsNumber) {
   let newNumber = Math.floor(Math.random(0, 9) * 10).toString();
   !numb.includes(newNumber) && (numb += newNumber);
 }
 
-/** Variables */
+/** Variablen */
 let userGuess = "";
 let massage = "";
 let finalMassage = "Guess the Numbers :";
@@ -25,38 +25,39 @@ function getNumbers() {
   numOfTry++;
   console.clear();
   rl.question(
-    `   ${userGuess} ${userGuess && "=>"} ${massage}
+    `${userGuess && userGuess + " =>"} ${massage}
 
-${finalMassage}`,
+ ${finalMassage} `,
     (numbers) => {
       if (numbers.length == rollsNumber) {
         massage = "";
 
-        let bull = 0; /** There is Exact Number */
-        let cow = 0; /** There is Exact Number in Exact Place */
+        let bull = 0; /** Es gibt eine genaue Nummer*/
+        let cow = 0; /** Es gibt die genaue Zahl an der genauen Stelle */
+        let err = "";
 
-        /** Count the Bull and the Cows */
         for (let n = 0; n < rollsNumber; n++) {
           for (let m = 0; m < rollsNumber; m++) {
+            /** Zähle die Bull und die Cows */
             numbers[m] == numb[n] && (m == n ? cow++ : bull++);
+
+            /** Check ob die ziffern Unique sind*/
+            n != m &&
+              numbers[n] == numbers[m] &&
+              (err = "Error : Please enter unique digits");
           }
+          /** Check ob input Nummer ist*/
+          isNaN(numbers[n]) && (err = "Error : Please only enter the number");
         }
 
-        massage = `Hint: ${bull} bull and ${cow} cows`;
+        /** Print die massage */
+        massage =
+          err ||
+          `Hint: ${bull} ${bull <= 1 ? "Bull" : "Bulls"} and ${cow} ${
+            cow <= 1 ? "Cow" : "Cows"
+          } `;
 
-        /** Check if the numbers are Unique */
-        for (let i = 0; i < rollsNumber; i++) {
-          for (let j = 0; j < rollsNumber; j++) {
-            i != j &&
-              numbers[i] == numbers[j] &&
-              (massage = "Error : Pls Enter Unique Numbers");
-          }
-        }
-
-        /** Check if input is Number */
-        isNaN(numbers) && (massage = "Error : Pls Enter just Numbers");
-
-        /** End */
+        /** Ende */
         if (cow == 4) {
           console.log(
             "\x1b[32m%s\x1b[0m",
@@ -68,12 +69,11 @@ ${finalMassage}`,
                   You tried ${numOfTry} times
           `
           );
-          rl.close();
-          return;
+          return rl.close();
         }
       } else {
-        /** Check if input length is 4 */
-        massage = `Error : Pls Enter ${rollsNumber} Numbers`;
+        /** Überprüf ob die Eingabelänge 4 ist */
+        massage = `Error : Please Enter only ${rollsNumber} Digits`;
       }
 
       userGuess = numbers;
